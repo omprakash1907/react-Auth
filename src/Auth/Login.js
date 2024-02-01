@@ -17,10 +17,11 @@ const Login = () => {
         .then((res)=>{
             localStorage.setItem("token", "true");
             console.log(res)
+            swal("Sign In Successfully!", "You clicked the button!", "success");
             nevigate('/home')
         })
         .catch((err)=>{
-            alert('error')
+            swal("Invalid!", "You clicked the button!", "error");
         })
     }
 
@@ -29,10 +30,12 @@ const Login = () => {
             .then((result) => {
                 localStorage.setItem("token", "true");
                 console.log(result.user.email)
+                swal("Sign In Successfully!", "You clicked the button!", "success");
                 nevigate('/home')
             })
             .catch((err) => {
                 console.log('Fail', err)
+                swal("Invalid!", "You clicked the button!", "error");
             })
     }
 

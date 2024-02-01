@@ -12,11 +12,11 @@ const Home = () => {
   const handleLogout = () => {
     signOut(auth).then(() => {
       localStorage.removeItem('token')
-      swal("Registerd Successfully!", "You clicked the button!", "success");
+      nevigate('/')
+      swal("Sign Out Successfully!", "You clicked the button!", "success");
     }).catch((error) => {
       swal("Invalid!", "You clicked the button!", "error");
     });
-    nevigate('/')
   }
   return (
     <div >
@@ -27,7 +27,7 @@ const Home = () => {
               <img src={logo} alt="" className='img-fluid' style={{ width: "150px" }} />
             </div>
             <div>
-              <button className='button-submit  bg-warning  rounded-1 px-4' onClick={handleLogout}>LogOut</button>
+              <button className='button-submit  bg-warning  rounded-1 px-4' onClick={handleLogout}>Sign Out</button>
             </div>
           </div>
         </div>

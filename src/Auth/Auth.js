@@ -7,7 +7,7 @@ import logo from '../Auth/image/Bumble-Logo.png'
 import captcha from '../Auth/image/recaptcha-logo.png'
 import swal from 'sweetalert'
 
-const Auth = ({ isLoggedIn, setIsLoggedIn }) => {
+const Auth = () => {
 
     const nevigate = useNavigate()
     const [email, setEmail] = useState()
@@ -19,7 +19,6 @@ const Auth = ({ isLoggedIn, setIsLoggedIn }) => {
 
             .then((res) => {
                 console.log(res)
-                localStorage.setItem("token", "true");
                 swal("Registerd Successfully!", "You clicked the button!", "success");
                 nevigate('/login')
             })
@@ -31,19 +30,7 @@ const Auth = ({ isLoggedIn, setIsLoggedIn }) => {
 
     }
 
-    const handleGoogle = () => {
-        signInWithPopup(auth, provider)
-            .then((result) => {
-                console.log(result.user.email)
-                localStorage.setItem("token", "true");
-                swal("Registerd Successfully!", "You clicked the button!", "success");
-                nevigate('/home')
-            })
-            .catch((err) => {
-                console.log('Fail', err)
-                swal("Invalid!", "You clicked the button!", "error");
-            })
-    }
+
     return (
         <div className="container">
             <div className="logo d-flex  justify-content-center mt-3 align-items-center ">
