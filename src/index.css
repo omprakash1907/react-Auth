@@ -154,3 +154,9 @@ code {
   background-color: rgba(255,255,255,.9);
   max-width: 750px;
 }
+
+.error-bg{
+  background-image: url('../src/Auth/image/404-error-template-3.avif');
+  background-size: contain;
+  background-position: center;
+}

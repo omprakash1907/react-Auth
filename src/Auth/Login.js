@@ -15,7 +15,7 @@ const Login = () => {
         e.preventDefault()
         signInWithEmailAndPassword(auth,email,password)
         .then((res)=>{
-            localStorage.setItem("loginFlag", "true");
+            localStorage.setItem("token", "true");
             console.log(res)
             nevigate('/home')
         })
@@ -27,7 +27,7 @@ const Login = () => {
     const handleGoogle = () => {
         signInWithPopup(auth, provider)
             .then((result) => {
-                localStorage.setItem("loginFlag", "true");
+                localStorage.setItem("token", "true");
                 console.log(result.user.email)
                 nevigate('/home')
             })

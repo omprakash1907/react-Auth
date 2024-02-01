@@ -19,7 +19,7 @@ const Auth = ({ isLoggedIn, setIsLoggedIn }) => {
 
             .then((res) => {
                 console.log(res)
-                localStorage.setItem("loginFlag", "true");
+                localStorage.setItem("token", "true");
                 swal("Registerd Successfully!", "You clicked the button!", "success");
                 nevigate('/login')
             })
@@ -35,11 +35,13 @@ const Auth = ({ isLoggedIn, setIsLoggedIn }) => {
         signInWithPopup(auth, provider)
             .then((result) => {
                 console.log(result.user.email)
-                localStorage.setItem("loginFlag", "true");
+                localStorage.setItem("token", "true");
+                swal("Registerd Successfully!", "You clicked the button!", "success");
                 nevigate('/home')
             })
             .catch((err) => {
                 console.log('Fail', err)
+                swal("Invalid!", "You clicked the button!", "error");
             })
     }
     return (
@@ -50,14 +52,6 @@ const Auth = ({ isLoggedIn, setIsLoggedIn }) => {
             <h4 className='text-center mt-3'>Welcome! How do you want to get started?</h4>
             <div className="d-flex  align-items-center  justify-content-center ">
                 <div className='form'>
-                    <div className="">
-                        <button className="btn google bg-black text-white  rounded-5 " onClick={handleGoogle}>
-                            <i class="fa-brands fa-google me-2 "></i><span>Continue with Google</span>
-                        </button>
-                    </div>
-                    <div className="devider text-center d-flex justify-content-center  align-content-center mt-3">
-                        <span className=' text-secondary fs-6 mx-2' >Or</span>
-                    </div>
                     <form className="mt-3 " onSubmit={handleSubmit}>
 
                         <div className="inputForm mb-3">

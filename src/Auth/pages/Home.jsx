@@ -4,16 +4,17 @@ import { auth } from '../firebase'
 import { signOut } from 'firebase/auth'
 import logo from '../image/Bumble-Logo.png'
 import profile from '../image/Screenshot 2024-01-31 231447.png'
+import swal from 'sweetalert'
 
 const Home = () => {
   const nevigate = useNavigate()
 
   const handleLogout = () => {
-    alert('h')
     signOut(auth).then(() => {
-      // Sign-out successful.
+      localStorage.removeItem('token')
+      swal("Registerd Successfully!", "You clicked the button!", "success");
     }).catch((error) => {
-      // An error happened.
+      swal("Invalid!", "You clicked the button!", "error");
     });
     nevigate('/')
   }

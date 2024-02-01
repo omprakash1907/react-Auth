@@ -1,18 +1,14 @@
 import React, { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
+import swal from 'sweetalert';
 
-const UserProtected = () => {
-    const navigate = useNavigate();
-    const { Component } = props;
-    useEffect(() => {
-        const loginFlag = JSON.parse(localStorage.getItem("loginFlag"))
-        if(loginFlag) navigate('/error');
-    })
-    return (
-        <div>
-            <Component />
-        </div>
-    )
+const UserProtected = (props) => {
+    const token = localStorage.getItem('token')
+    if(token){
+        swal("Please Sign Out First!", "You clicked the button!", "error");
+        return <Navigate    to="/home" replace/>
+    }
+    return <>{props.children}</>;
 }
 
 export default UserProtected
